@@ -1,0 +1,23 @@
+apiVersion: apps/v1  
+kind: Deployment 
+metadata: 
+  name: app-dot-net-deployment
+spec: 
+  replicas: 5 
+  selector:
+    matchLabels:
+      app: app
+  template: 
+    metadata: 
+      labels: 
+        app: app
+    spec: 
+      containers: 
+        - name: app-dot-net
+          image: samir1977/app-dot-net:latest  
+          resources: 
+            limits: 
+              memory: "128Mi"  
+              cpu: "500m"  
+          ports:  
+            - containerPort: 80
